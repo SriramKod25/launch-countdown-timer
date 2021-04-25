@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap');
+
+:root {
+    --no-background: hsl(237, 26%, 17%);
+    --app-background: hsl(275, 29%, 8%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Red Hat Text", sans-serif;
+    color: #fff;
+}
+
+.container {
+    min-height: 100vh;
+    background: url(./images/pattern-hills.svg) no-repeat bottom, url(./images/bg-stars.svg), var(--app-background);
+    padding: 5rem 1rem;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    align-items: start;
+    justify-items: center;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: .45rem;
+    font-size: 1rem;
+    text-align: center;
+    align-self: center;
+}
+
+.countdown {
+    display: flex;
+}
+
+.number {
+    text-align: center;
+    color: hsl(345, 95%, 68%);
+}
+
+.number + .number {
+    margin-left: 2.5rem;
+}
+
+.hours,
+.minutes,
+.seconds,
+.days {
+    padding: 1rem 1.7rem;
+    background-color: var(--no-background);
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    border-radius: .5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 .3rem 0 rgba(0, 0, 0, 0.35);
+}
+
+.hours::before,
+.minutes::before,
+.seconds::before,
+.days::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+}
+
+.number span::before,
+.number span::after {
+    content: "";
+    position: absolute;
+    background-color: hsl(235, 26%, 8%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: 50%;
+}
+
+.number span::before {
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.number span::after {
+    right: 0;
+    transform: translate(55%, -50%);
+}
+
+.unit {
+    letter-spacing: .25rem;
+    font-size: .5rem;
+    color: hsl(237, 18%, 59%);
+}
+
+footer {
+    /* margin-top: auto; */
+    align-self: end;
+}
+
+footer > a + a { 
+    margin-left: 2rem;
+}
+
+a:hover > img {
+    transform: scale(1.5);
+    transition: transform 250ms ease;
+}
+
+@media (max-width: 500px) {
+    .number + .number {
+        margin-left: .5rem;
+    }
+
+    .hours,
+    .seconds,
+    .days,
+    .minutes {
+        font-size: 1.25rem;
+    }
+}
